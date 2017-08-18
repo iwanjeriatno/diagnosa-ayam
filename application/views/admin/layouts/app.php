@@ -7,7 +7,7 @@
     <meta name="author" content="Dashboard">
     <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 
-    <title>Sistem Pakar &mdash; <?= $title; ?></title>
+    <title>Sistem Pakar &mdash; Diagnosa Penyakit Ayam</title>
 
     <!-- Bootstrap core CSS -->
     <link href="<?= base_url('assets/css/bootstrap.css') ?>" rel="stylesheet">

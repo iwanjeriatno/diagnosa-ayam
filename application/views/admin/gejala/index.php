@@ -1,43 +1,52 @@
+*********************************************************************************************************************************************************** -->
+<!--main content start-->
+<section id="main-content">
 <section class="wrapper">
-          	<h3><i class="fa fa-angle-right"></i> Data Gejala</h3>
+          	<h3><i class="fa fa-angle-right"></i><?= $path ?></h3>
 				<div class="row">
-
 	                  <div class="col-md-12">
 
                       <div class="content-panel">
-                          <table class="table table-striped table-advance table-hover ">
+                        <div class="container">
+
+                          <table class="table table-striped table-advance table-hover datatables" id="datatables">
                             <div class="container">
-                              <h4 class="pull-left"><i class="fa fa-angle-right"></i> Advanced Table</h4>
-                              <a class="pull-right btn btn-warning" href="<?= base_url('index.php/app/login') ?>">Tambah Data</a>
+                              <h4 class="pull-left"><i class="fa fa-angle-right"></i> Data <?= $path ?></h4>
+                              <a class="pull-right btn btn-warning" href="<?= site_url('gejala/create') ?>">Tambah Data</a>
                             </div>
 	                  	  	  <hr>
                               <thead>
                               <tr>
-                                  <th></th>
-                                  <th><i class="fa fa-bullhorn"></i> Kode Gejala</th>
-                                  <th class="hidden-phone"><i class="fa fa-question-circle"></i>Nama Gejala</th>
-                                  <th><i class=" fa fa-edit"></i> Aksi</th>
-                                  <th></th>
+                                  <th>No</th>
+                                  <th>Kode Gejala</th>
+                                  <th>Nama Gejala</th>
+                                  <th>Aksi</th>
                               </tr>
                               </thead>
                               <tbody>
-                                <?php foreach ($gejala as $item) { ?>
+                                <?php
+                                  $no = 1;
+                                  foreach ($gejala as $item) { ?>
                                     <tr>
-                                        <td></td>
+                                        <td><?= $no++ ?></td>
                                         <td><?= $item['kd_gejala'] ?></td>
                                         <td><?= $item['nama_gejala'] ?></td>
                                         <td>
-                                            <button class="btn btn-success btn-sm"><i class="fa fa-check"></i></button>
-                                            <button class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i></button>
-                                            <button class="btn btn-danger btn-sm"><i class="fa fa-trash-o "></i></button>
+                                            <a href="<?= site_url('gejala/'.$item['id'].'/edit') ?>" class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i></a>
+                                            <button data-toggle="modal" data-target="#deleteModal" class="btn btn-danger btn-sm"><i class="fa fa-trash-o "></i></button>
                                         </td>
                                     </tr>
                                 <?php } ?>
                               </tbody>
                           </table>
+                          <?php include('delete.php') ?>
+                        </div>
+
+
                       </div><!-- /content-panel -->
 
                     </div><!-- /col-md-12 -->
               </div><!-- /row -->
 
+		</section><! --/wrapper -->
 		</section><! --/wrapper -->

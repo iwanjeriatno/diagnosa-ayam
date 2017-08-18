@@ -8,47 +8,41 @@
     <!-- **********************************************************************************************************************************************************
     MAIN CONTENT
     *********************************************************************************************************************************************************** -->
-
+    <!--main content start-->
+    <section id="main-content">
         <section class="wrapper">
 
             <div class="row">
                 <div class="col-lg-9 main-chart">
 
                   <div class="row mtbox">
-                    <div class="col-md-2 col-sm-2 col-md-offset-1 box0">
+                    <div class="col-md-3 col-sm-3 box0">
                       <div class="box1">
-                <span class="li_heart"></span>
-                <h3>933</h3>
+                        <i class="fa fa-heart fa-5x"></i>
+                        <h3>933</h3>
                       </div>
-                <p>933 People liked your page the last 24hs. Whoohoo!</p>
+                      <p>Data Penyakit</p>
                     </div>
-                    <div class="col-md-2 col-sm-2 box0">
+                    <div class="col-md-3 col-sm-3 box0">
                       <div class="box1">
-                <span class="li_cloud"></span>
-                <h3>+48</h3>
+                        <i class="fa fa-heart-o fa-5x"></i>
+                        <h3>+48</h3>
                       </div>
-                <p>48 New files were added in your cloud storage.</p>
+                      <p>Daftar Gejala</p>
                     </div>
-                    <div class="col-md-2 col-sm-2 box0">
+                    <div class="col-md-3 col-sm-3 box0">
                       <div class="box1">
-                <span class="li_stack"></span>
-                <h3>23</h3>
+                        <i class="fa fa-medkit fa-5x"></i>
+                        <h3>33</h3>
                       </div>
-                <p>You have 23 unread messages in your inbox.</p>
+                      <p>Daftar Solusi</p>
                     </div>
-                    <div class="col-md-2 col-sm-2 box0">
+                    <div class="col-md-3 col-sm-3 box0">
                       <div class="box1">
-                <span class="li_news"></span>
-                <h3>+10</h3>
+                        <i class="fa fa-users fa-5x"></i>
+                        <h3>OK!</h3>
                       </div>
-                <p>More than 10 news were added in your reader.</p>
-                    </div>
-                    <div class="col-md-2 col-sm-2 box0">
-                      <div class="box1">
-                <span class="li_data"></span>
-                <h3>OK!</h3>
-                      </div>
-                <p>Your server is working perfectly. Relax & enjoy.</p>
+                      <p>Daftar Users</p>
                     </div>
 
                   </div><!-- /row mt -->
@@ -66,7 +60,7 @@
                   <p><i class="fa fa-database"></i> 70%</p>
                 </div>
                           </div>
-              <canvas id="serverstatus01" height="120" width="120"></canvas>
+              <canvas id="serverstatus01" height="130" width="130"></canvas>
               <script>
                 var doughnutData = [
                     {
@@ -374,3 +368,5 @@
                 </div><!-- /col-lg-3 -->
             </div><! --/row -->
         </section>
+      </section>
+      <!--main content end-->
