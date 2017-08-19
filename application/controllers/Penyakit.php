@@ -19,15 +19,38 @@ class Penyakit extends CI_Controller {
 		$this->load->view('admin/layouts/footer');
 	}
 
+	public function relasi_gejala()
+	{
+		$data['path'] = 'Penyakit dan Gejala';
+		$penyakit     = array();
+
+		$hasil                   = $this->penyakit_model->penyakit();
+		$data['gejala']          = $this->penyakit_model->gejala();
+		$data['total_gejala']    = $this->penyakit_model->total_gejala();
+		$data['penyakit_gejala'] = $this->penyakit_model->penyakit_gejala();
+
+
+		foreach ($hasil as $item) {
+			$penyakit[$item['kd_penyakit']] = '('.$item['kd_penyakit'] .') - '. $item['jenis_penyakit'];
+		}
+		$data['option'] = $penyakit;
+
+		$this->load->view('admin/layouts/header', $data);
+		$this->load->view('admin/layouts/sidebar');
+		$this->load->view('admin/penyakit/relasi', $data);
+		$this->load->view('admin/layouts/footer');
+	}
+
 	public function show($no)
 	{
 		$data['penyakit_item'] = $this->penyakit_model->index($no);
 		$data['path'] = 'Penyakit';
 		$this->load->view('layouts/header', $data);
-		$this->load->view('news/details', $data);
+		$this->load->view('penyakit/details', $data);
 		$this->load->view('layouts/footer');
 	}
 
+	// create penyakit
 	public function create()
 	{
 		$data['path'] = 'Penyakit';
@@ -46,6 +69,14 @@ class Penyakit extends CI_Controller {
 			$this->penyakit_model->store();
 			redirect('penyakit');
 		}
+	}
+
+	// create relasi-gejala
+	public function create_penyakit_gejala()
+	{
+		$data['path'] = 'Penyakit Ke Gejala';
+		$this->penyakit_model->store_penyakit_gejala();
+		redirect('penyakit/relasi-gejala');
 	}
 
 	public function edit($id)
@@ -72,5 +103,11 @@ class Penyakit extends CI_Controller {
 	{
 		$this->penyakit_model->destroy($id);
 		redirect('penyakit');
+	}
+
+	public function delete_penyakit_gejala($id)
+	{
+		$this->penyakit_model->destroy_penyakit_gejala($id);
+		redirect('penyakit/relasi-gejala');
 	}
 }

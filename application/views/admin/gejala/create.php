@@ -38,6 +38,7 @@
 														'name'  => 'nama_gejala',
 														'class' => 'form-control',
 														'placeholder' => 'Gejala',
+														'autofocus' => 'autofocus',
 													);
 
 													echo form_input($nama_gejala);

@@ -36,12 +36,28 @@
                       <div class="col-sm-6">
 												<?php
 													$jenis_penyakit = array(
-														'name'  => 'jenis_penyakit',
-														'class' => 'form-control',
+														'name'        => 'jenis_penyakit',
+														'class'       => 'form-control',
 														'placeholder' => 'Penyakit',
+														'autofocus'   => 'autofocus',
 													);
 
 													echo form_input($jenis_penyakit);
+												?>
+                      </div>
+                  </div>
+
+                  <div class="row form-group">
+                      <label class="col-sm-2 col-sm-offset-2 control-label">Nama Latin</label>
+                      <div class="col-sm-6">
+												<?php
+													$nama_latin = array(
+														'name'        => 'nama_latin',
+														'class'       => 'form-control',
+														'placeholder' => 'Nama Latin',
+													);
+
+													echo form_input($nama_latin);
 												?>
                       </div>
                   </div>

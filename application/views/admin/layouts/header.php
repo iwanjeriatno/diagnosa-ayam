@@ -158,7 +158,7 @@
               </div>
               <div class="top-menu">
                 <ul class="nav pull-right top-menu">
-                      <li><a class="logout" href="<?= base_url('index.php/app/login') ?>">Logout</a></li>
+                      <li><a class="logout btn btn-primary" style="color:black" href="<?= base_url('index.php/app/login') ?>">Logout</a></li>
                 </ul>
               </div>
             </header>

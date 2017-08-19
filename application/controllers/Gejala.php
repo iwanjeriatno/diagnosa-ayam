@@ -19,12 +19,29 @@ class Gejala extends CI_Controller {
 		$this->load->view('admin/layouts/footer');
 	}
 
+	public function relasi_solusi()
+	{
+		$data['path']   = 'Gejala';
+		$gejala = array();
+		$hasil = $this->gejala_model->gejala();
+
+		foreach ($hasil as $item) {
+			$gejala[$item['id']] = $item['nama_gejala'];
+		}
+		$data['option'] = $gejala;
+
+		$this->load->view('admin/layouts/header', $data);
+		$this->load->view('admin/layouts/sidebar');
+		$this->load->view('admin/gejala/relasi', $data);
+		$this->load->view('admin/layouts/footer');
+	}
+
 	public function show($no)
 	{
 		$data['gejala_item'] = $this->gejala_model->index($no);
 		$data['path'] = 'Gejala';
 		$this->load->view('layouts/header', $data);
-		$this->load->view('news/details', $data);
+		$this->load->view('gejala/details', $data);
 		$this->load->view('layouts/footer');
 	}
 

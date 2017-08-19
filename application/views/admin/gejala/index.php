@@ -12,7 +12,14 @@
                           <table class="table table-striped table-advance table-hover datatables" id="datatables">
                             <div class="container">
                               <h4 class="pull-left"><i class="fa fa-angle-right"></i> Data <?= $path ?></h4>
-                              <a class="pull-right btn btn-warning" href="<?= site_url('gejala/create') ?>">Tambah Data</a>
+                              <div class="btn-group pull-right">
+                                <a type="button" class=" btn btn-warning btn-round" href="<?= site_url('gejala/create') ?>">
+                                  <i class="fa fa-plus" aria-hidden="true"></i> &nbsp; Tambah Data
+                                </a>
+                                <a type="button" class="btn btn-success btn-round" href="<?= site_url('gejala/relasi-solusi') ?>">
+                                  Gejala Ke Solusi &nbsp; <i class="fa fa-retweet" aria-hidden="true"></i>
+                                </a>
+                              </div>
                             </div>
 	                  	  	  <hr>
                               <thead>

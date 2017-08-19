@@ -49,6 +49,21 @@
                   </div>
 
                   <div class="row form-group">
+                      <label class="col-sm-2 col-sm-offset-2 control-label">Nama Latin</label>
+                      <div class="col-sm-6">
+												<?php
+													$nama_latin = array(
+														'name'  => 'nama_latin',
+														'class' => 'form-control',
+														'value' => $penyakit_item['nama_latin'],
+													);
+
+													echo form_input($nama_latin);
+												?>
+                      </div>
+                  </div>
+
+                  <div class="row form-group">
                       <label class="col-sm-2 col-sm-offset-2 control-label">Keterangan</label>
                       <div class="col-sm-6">
 												<?php

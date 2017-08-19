@@ -12,7 +12,14 @@
                           <table class="table table-striped table-advance table-hover datatables" id="datatables">
                             <div class="container">
                               <h4 class="pull-left"><i class="fa fa-angle-right"></i> Data <?= $path ?></h4>
-                              <a class="pull-right btn btn-warning" href="<?= site_url('penyakit/create') ?>">Tambah Data</a>
+                              <div class="btn-group pull-right">
+                                <a type="button" class=" btn btn-warning btn-round" href="<?= site_url('penyakit/create') ?>">
+                                  <i class="fa fa-plus" aria-hidden="true"></i> &nbsp; Tambah Data
+                                </a>
+                                <a type="button" class="btn btn-success btn-round" href="<?= site_url('penyakit_gejala') ?>">
+                                  Penyakit Ke Gejala &nbsp; <i class="fa fa-retweet" aria-hidden="true"></i>
+                                </a>
+                              </div>
                             </div>
 	                  	  	  <hr>
                               <thead>
@@ -20,6 +27,7 @@
                                   <th>No</th>
                                   <th>Kode Penyakit</th>
                                   <th>Jenis Penyakit</th>
+                                  <th>Nama Latin</th>
                                   <th>Keterangan</th>
                                   <th>Aksi</th>
                               </tr>
@@ -32,6 +40,7 @@
                                         <td><?= $no++ ?></td>
                                         <td><?= $item['kd_penyakit'] ?></td>
                                         <td><?= $item['jenis_penyakit'] ?></td>
+                                        <td><?= $item['nama_latin'] ?></td>
                                         <td><?= $item['keterangan'] ?></td>
                                         <td>
                                             <a href="<?= site_url('penyakit/'.$item['id'].'/edit') ?>" class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i></a>

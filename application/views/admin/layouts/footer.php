@@ -1,6 +1,6 @@
 
       <!--footer start-->
-      <footer class="site-footer navbar navbar-fixed-bottom">
+      <footer class="site-footer" style="margin-top:100px">
       <!--main content end-->
           <div class="text-center">
               2014 - Alvarez.is

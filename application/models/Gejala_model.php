@@ -12,18 +12,25 @@ class Gejala_model extends CI_Model
 	{
 		if($kode == FALSE) {
 			$query = $this->db->get('gejala');
-
 			return $query->result_array();
 		}
 		$query = $this->db->get_where('gejala', array('kd_gejala' => $kode));
 		return $query->row_array();
 	}
 
+	// gejala
+	public function gejala()
+	{
+		$query = $this->db->get('gejala');
+		return $query->result_array();
+	}
+
 	// kode gejala
-	public function kd_gejala() {
+	public function kd_gejala()
+	{
 		$query     = $this->db->get('gejala');
 		$kode      = $query->num_rows();
-		$kd_gejala = sprintf("%07d", $kode+1);
+		$kd_gejala = sprintf("%03d", $kode+1);
 		return "G".$kd_gejala;
 	}
 
@@ -37,7 +44,7 @@ class Gejala_model extends CI_Model
 	{
 		$data      = array(
 			'kd_gejala'   => $this->input->post('kd_gejala'),
-			'nama_gejala' => $this->input->post('nama_gejala'),
+			'nama_gejala' => ucfirst($this->input->post('nama_gejala')),
 		);
 		return $this->db->insert('gejala', $data);
 	}
@@ -46,7 +53,7 @@ class Gejala_model extends CI_Model
 	{
 		$data = array(
 			'kd_gejala'   => $this->input->post('kd_gejala'),
-			'nama_gejala' => $this->input->post('nama_gejala'),
+			'nama_gejala' => ucfirst($this->input->post('nama_gejala')),
 		);
 		$this->db->where('id', $id);
 		return $this->db->update('gejala', $data);
