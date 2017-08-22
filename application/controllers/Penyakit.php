@@ -13,17 +13,16 @@ class Penyakit extends CI_Controller {
 		$data['penyakit'] = $this->penyakit_model->index();
 		$data['path']   = 'Penyakit';
 
-		$this->load->view('admin/layouts/header', $data);
-		$this->load->view('admin/layouts/sidebar');
-		$this->load->view('admin/penyakit/index', $data);
-		$this->load->view('admin/layouts/footer');
+		$this->load->view('pakar/layouts/header', $data);
+		$this->load->view('pakar/layouts/sidebar');
+		$this->load->view('pakar/penyakit/index', $data);
+		$this->load->view('pakar/layouts/footer');
 	}
 
 	public function relasi_gejala()
 	{
 		$data['path'] = 'Penyakit dan Gejala';
 		$penyakit     = array();
-
 		$hasil                   = $this->penyakit_model->penyakit();
 		$data['gejala']          = $this->penyakit_model->gejala();
 		$data['total_gejala']    = $this->penyakit_model->total_gejala();
@@ -35,10 +34,10 @@ class Penyakit extends CI_Controller {
 		}
 		$data['option'] = $penyakit;
 
-		$this->load->view('admin/layouts/header', $data);
-		$this->load->view('admin/layouts/sidebar');
-		$this->load->view('admin/penyakit/relasi', $data);
-		$this->load->view('admin/layouts/footer');
+		$this->load->view('pakar/layouts/header', $data);
+		$this->load->view('pakar/layouts/sidebar');
+		$this->load->view('pakar/penyakit_gejala/index', $data);
+		$this->load->view('pakar/layouts/footer');
 	}
 
 	public function show($no)
@@ -61,10 +60,10 @@ class Penyakit extends CI_Controller {
 		$this->form_validation->set_rules('keterangan','Keterangan','required');
 
 		if($this->form_validation->run() == FALSE) {
-			$this->load->view('admin/layouts/header', $data);
-			$this->load->view('admin/layouts/sidebar');
-			$this->load->view('admin/penyakit/create', $data);
-			$this->load->view('admin/layouts/footer');
+			$this->load->view('pakar/layouts/header', $data);
+			$this->load->view('pakar/layouts/sidebar');
+			$this->load->view('pakar/penyakit/create', $data);
+			$this->load->view('pakar/layouts/footer');
 		} else {
 			$this->penyakit_model->store();
 			redirect('penyakit');
@@ -89,10 +88,10 @@ class Penyakit extends CI_Controller {
 
 		if($this->form_validation->run() == FALSE) {
 			$data['penyakit_item'] = $this->penyakit_model->show($id);
-			$this->load->view('admin/layouts/header', $data);
-			$this->load->view('admin/layouts/sidebar');
-			$this->load->view('admin/penyakit/edit', $data);
-			$this->load->view('admin/layouts/footer');
+			$this->load->view('pakar/layouts/header', $data);
+			$this->load->view('pakar/layouts/sidebar');
+			$this->load->view('pakar/penyakit/edit', $data);
+			$this->load->view('pakar/layouts/footer');
 		} else {
 			$this->penyakit_model->update($id);
 			redirect('penyakit');

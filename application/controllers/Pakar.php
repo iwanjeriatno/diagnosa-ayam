@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Home extends CI_Controller {
+class Pakar extends CI_Controller {
 
 	public function __construct()
 	{
@@ -9,9 +9,19 @@ class Home extends CI_Controller {
 		$this->load->model('penyakit_model');
 		$this->load->model('gejala_model');
 		$this->load->model('solusi_model');
+
+		// authentication
+		$isPakar = array(
+      'status' => 'login',
+      'role'   => 'role',
+    );
+    if($this->session->userdata(!$isPakar)) {
+      redirect(site_url('login'));
+    }
+
 	}
 
-	public function dashboard()
+	public function index()
 	{
 		$data['total_penyakit'] = $this->penyakit_model->total_penyakit();
 		$data['total_gejala']   = $this->gejala_model->total_gejala();

@@ -13,10 +13,10 @@ class Solusi extends CI_Controller {
 		$data['solusi'] = $this->solusi_model->index();
 		$data['path']   = 'Solusi';
 
-		$this->load->view('admin/layouts/header', $data);
-		$this->load->view('admin/layouts/sidebar');
-		$this->load->view('admin/solusi/index', $data);
-		$this->load->view('admin/layouts/footer');
+		$this->load->view('pakar/layouts/header', $data);
+		$this->load->view('pakar/layouts/sidebar');
+		$this->load->view('pakar/solusi/index', $data);
+		$this->load->view('pakar/layouts/footer');
 	}
 
 	public function show($no)
@@ -37,10 +37,10 @@ class Solusi extends CI_Controller {
 		$this->form_validation->set_rules('solusi','Solusi','required');
 
 		if($this->form_validation->run() == FALSE) {
-			$this->load->view('admin/layouts/header', $data);
-			$this->load->view('admin/layouts/sidebar');
-			$this->load->view('admin/solusi/create', $data);
-			$this->load->view('admin/layouts/footer');
+			$this->load->view('pakar/layouts/header', $data);
+			$this->load->view('pakar/layouts/sidebar');
+			$this->load->view('pakar/solusi/create', $data);
+			$this->load->view('pakar/layouts/footer');
 		} else {
 			$this->solusi_model->store();
 			redirect('solusi');
@@ -56,10 +56,10 @@ class Solusi extends CI_Controller {
 
 		if($this->form_validation->run() == FALSE) {
 			$data['solusi_item'] = $this->solusi_model->show($id);
-			$this->load->view('admin/layouts/header', $data);
-			$this->load->view('admin/layouts/sidebar');
-			$this->load->view('admin/solusi/edit', $data);
-			$this->load->view('admin/layouts/footer');
+			$this->load->view('pakar/layouts/header', $data);
+			$this->load->view('pakar/layouts/sidebar');
+			$this->load->view('pakar/solusi/edit', $data);
+			$this->load->view('pakar/layouts/footer');
 		} else {
 			$this->solusi_model->update($id);
 			redirect('solusi');
