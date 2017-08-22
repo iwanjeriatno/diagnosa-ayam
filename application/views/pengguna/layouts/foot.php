@@ -5,7 +5,8 @@
 <!-- dist -->
 <script src="<?= base_url('assets/dist/datatables/js/jquery.dataTables.min.js') ?>"></script>
 <script src="<?= base_url('assets/dist/datatables/js/dataTables.bootstrap.min.js') ?>"></script>
-<link href="<?= base_url('assets/dist/datatables/css/dataTables.bootstrap.min.css') ?>" rel="stylesheet">
+<script src="<?= base_url('assets/dist/datatables/js/dataTables.select.min.js') ?>"></script>
+
 <!-- bootstrap-switch -->
 <script src="<?= base_url('assets/js/jquery-ui-1.9.2.custom.min.js') ?>"></script>
 <script src="<?= base_url('assets/dist/bootstrap-switch/bootstrap-switch.js') ?>"></script>
@@ -22,7 +23,18 @@
 
 <script type="text/javascript">
     $(document).ready(function(){
-      $('.datatables').DataTable(10);
+      $('.datatables').DataTable({
+        columnDefs: [ {
+            orderable: false,
+            className: 'select-checkbox',
+            targets:   0
+        } ],
+        select: {
+            style:    'multi',
+            selector: 'td:first-child'
+        },
+        order: [[ 1, 'desc' ]]
+      });
       $("[data-toggle='switch']").wrap('<div class="switch" />').parent().bootstrapSwitch();
     });
 </script>

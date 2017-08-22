@@ -16,7 +16,7 @@
                                 <a type="button" class=" btn btn-warning btn-round" href="<?= site_url('penyakit/create') ?>">
                                   <i class="fa fa-plus" aria-hidden="true"></i> &nbsp; Tambah Data
                                 </a>
-                                <a type="button" class="btn btn-success btn-round" href="<?= site_url('penyakit_gejala') ?>">
+                                <a type="button" class="btn btn-success btn-round" href="<?= site_url('penyakit/relasi-gejala') ?>">
                                   Penyakit Ke Gejala &nbsp; <i class="fa fa-retweet" aria-hidden="true"></i>
                                 </a>
                               </div>
@@ -24,7 +24,7 @@
 	                  	  	  <hr>
                               <thead>
                               <tr>
-                                  <th>No</th>
+                                  <th></th>
                                   <th>Kode Penyakit</th>
                                   <th>Jenis Penyakit</th>
                                   <th>Nama Latin</th>
@@ -32,19 +32,28 @@
                                   <th>Aksi</th>
                               </tr>
                               </thead>
+                              <tfoot>
+                              <tr>
+                                  <th></th>
+                                  <th>Kode Penyakit</th>
+                                  <th>Jenis Penyakit</th>
+                                  <th>Nama Latin</th>
+                                  <th>Keterangan</th>
+                                  <th>Aksi</th>
+                              </tr>
+                            </tfoot>
                               <tbody>
                                 <?php
-                                  $no = 1;
                                   foreach ($penyakit as $item) { ?>
                                     <tr>
-                                        <td><?= $no++ ?></td>
+                                        <td></td>
                                         <td><?= $item['kd_penyakit'] ?></td>
                                         <td><?= $item['jenis_penyakit'] ?></td>
                                         <td><?= $item['nama_latin'] ?></td>
                                         <td><?= $item['keterangan'] ?></td>
                                         <td>
                                             <a href="<?= site_url('penyakit/'.$item['id'].'/edit') ?>" class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i></a>
-                                            <button data-toggle="modal" data-target="#deleteModal" class="btn btn-danger btn-sm"><i class="fa fa-trash-o "></i></button>
+                                            <button id="delete" value="<?= $item['id'] ?>" class="btn btn-danger btn-sm"><i class="fa fa-trash-o "></i></button>
                                         </td>
                                     </tr>
                                 <?php } ?>

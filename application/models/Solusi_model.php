@@ -19,6 +19,14 @@ class Solusi_model extends CI_Model
 		return $query->row_array();
 	}
 
+	// total solusi
+	public function total_solusi()
+	{
+		$query = $this->db->get('solusi');
+		$total = $query->num_rows();
+		return $total;
+	}
+
 	// kode solusi
 	public function kd_solusi() {
 		$query     = $this->db->get('solusi');

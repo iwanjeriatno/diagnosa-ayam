@@ -12,7 +12,6 @@ class Penyakit_model extends CI_Model
 	{
 		if($kode == FALSE) {
 			$query = $this->db->get('penyakit');
-
 			return $query->result_array();
 		}
 		$query = $this->db->get_where('penyakit', array('kd_penyakit' => $kode));
@@ -22,14 +21,14 @@ class Penyakit_model extends CI_Model
 	// penyakit
 	public function penyakit()
 	{
-		$query = $this->db->order_by('id','desc')->get('penyakit');
+		$query = $this->db->order_by('kd_penyakit','desc')->get('penyakit');
 		return $query->result_array();
 	}
 
 	// gejala
 	public function gejala()
 	{
-		$query = $this->db->get('gejala');
+		$query = $this->db->order_by('kd_gejala','asc')->get('gejala');
 		$total = $query->num_rows();
 		return $query->result_array();
 	}
@@ -45,6 +44,14 @@ class Penyakit_model extends CI_Model
 											->get();
 
 		return $query->result_array();
+	}
+
+	// total penyakit
+	public function total_penyakit()
+	{
+		$query = $this->db->get('penyakit');
+		$total = $query->num_rows();
+		return $total;
 	}
 
 	// total gejala
@@ -83,19 +90,35 @@ class Penyakit_model extends CI_Model
 	// store penyakit-gejala
 	public function store_penyakit_gejala()
 	{
+		$penyakit = array();
+		$gejala   = array();
 		$penyakit_gejala = array();
+
 		$kd_penyakit = $this->input->post('kd_penyakit');
 		$kd_gejala   = $this->input->post('kd_gejala');
 
-		for($a=1; $a<=count($kd_gejala); $a++) {
-			foreach ($kd_gejala as $item) {
-				$data      = array(
-					'kd_penyakit' => $kd_penyakit,
-					'kd_gejala'   => $item,
-				);
-			}
+		// input data gejala
+		foreach ($kd_gejala as $item) {
+			$gejala[] = $item;
+			$data      = array(
+				'kd_gejala' => $item,
+			);
 			$penyakit_gejala = $this->db->insert('penyakit_gejala', $data);
 		}
+
+		// update data penyakit
+		for($a=0; $a<=count($kd_gejala)-1; $a++) {
+			$penyakit[$a]  = $kd_penyakit;
+			$data      = array(
+				'kd_penyakit' => $penyakit[$a],
+			);
+			$where     = array(
+				'kd_gejala' => $gejala[$a],
+			);
+			$penyakit_gejala = $this->db->update('penyakit_gejala', $data, $where);
+		}
+
+
 		return $penyakit_gejala;
 	}
 

@@ -18,6 +18,14 @@ class Gejala_model extends CI_Model
 		return $query->row_array();
 	}
 
+	// total gejala
+	public function total_gejala()
+	{
+		$query = $this->db->get('gejala');
+		$total = $query->num_rows();
+		return $total;
+	}
+
 	// gejala
 	public function gejala()
 	{
@@ -43,8 +51,10 @@ class Gejala_model extends CI_Model
 	public function store()
 	{
 		$data      = array(
-			'kd_gejala'   => $this->input->post('kd_gejala'),
-			'nama_gejala' => ucfirst($this->input->post('nama_gejala')),
+			'kd_gejala'         => $this->input->post('kd_gejala'),
+			'nama_gejala'       => ucfirst($this->input->post('nama_gejala')),
+			'gejala_awal_ya'    => $this->input->post('gejala_awal_ya'),
+			'gejala_awal_tidak' => $this->input->post('gejala_awal_tidak'),
 		);
 		return $this->db->insert('gejala', $data);
 	}
@@ -52,8 +62,10 @@ class Gejala_model extends CI_Model
 	public function update($id)
 	{
 		$data = array(
-			'kd_gejala'   => $this->input->post('kd_gejala'),
-			'nama_gejala' => ucfirst($this->input->post('nama_gejala')),
+			'kd_gejala'         => $this->input->post('kd_gejala'),
+			'nama_gejala'       => ucfirst($this->input->post('nama_gejala')),
+			'gejala_awal_ya'    => $this->input->post('gejala_awal_ya'),
+			'gejala_awal_tidak' => $this->input->post('gejala_awal_tidak'),
 		);
 		$this->db->where('id', $id);
 		return $this->db->update('gejala', $data);

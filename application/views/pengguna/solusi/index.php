@@ -12,40 +12,27 @@
                           <table class="table table-striped table-advance table-hover datatables" id="datatables">
                             <div class="container">
                               <h4 class="pull-left"><i class="fa fa-angle-right"></i> Data <?= $path ?></h4>
-                              <div class="btn-group pull-right">
-                                <a type="button" class=" btn btn-warning btn-round" href="<?= site_url('gejala/create') ?>">
-                                  <i class="fa fa-plus" aria-hidden="true"></i> &nbsp; Tambah Data
-                                </a>
-                                <a type="button" class="btn btn-success btn-round" href="<?= site_url('gejala/relasi-solusi') ?>">
-                                  Gejala Ke Solusi &nbsp; <i class="fa fa-retweet" aria-hidden="true"></i>
-                                </a>
-                              </div>
+                              <a class="pull-right btn btn-warning" href="<?= site_url('solusi/create') ?>">Tambah Data</a>
                             </div>
 	                  	  	  <hr>
                               <thead>
                               <tr>
-                                  <th></th>
                                   <th>No</th>
-                                  <th>Kode Gejala</th>
-                                  <th>Nama Gejala</th>
-                                  <th>Gejala Awal (Ya)</th>
-                                  <th>Gejala Awal (Tidak)</th>
+                                  <th>Kode Solusi</th>
+                                  <th>Solusi</th>
                                   <th>Aksi</th>
                               </tr>
                               </thead>
                               <tbody>
                                 <?php
                                   $no = 1;
-                                  foreach ($gejala as $item) { ?>
+                                  foreach ($solusi as $item) { ?>
                                     <tr>
-                                        <td></td>
                                         <td><?= $no++ ?></td>
-                                        <td><?= $item['kd_gejala'] ?></td>
-                                        <td><?= $item['nama_gejala'] ?></td>
-                                        <td><?= $item['gejala_awal_ya'] ?></td>
-                                        <td><?= $item['gejala_awal_tidak'] ?></td>
+                                        <td><?= $item['kd_solusi'] ?></td>
+                                        <td><?= $item['solusi'] ?></td>
                                         <td>
-                                            <a href="<?= site_url('gejala/'.$item['id'].'/edit') ?>" class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i></a>
+                                            <a href="<?= site_url('solusi/'.$item['id'].'/edit') ?>" class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i></a>
                                             <button data-toggle="modal" data-target="#deleteModal" class="btn btn-danger btn-sm"><i class="fa fa-trash-o "></i></button>
                                         </td>
                                     </tr>

@@ -42,8 +42,9 @@
 
                   <div class="row form-group">
 
+
 											<?php foreach ($gejala as $item): ?>
-												<?php if ($total_gejala/2): ?>
+												<?php if ($item['id'] <= $total_gejala/2): ?>
 
 														<div class="col-sm-6">
 

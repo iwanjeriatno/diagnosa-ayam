@@ -167,7 +167,7 @@
 																			<td><?= '('.$item['kd_penyakit'] .') - '. $item['jenis_penyakit'] ?></td>
 																			<td><?= '('.$item['kd_gejala'] .') - '. $item['nama_gejala'] ?></td>
 																			<td>
-																					<button data-toggle="modal" data-target="#deleteModal" class="btn btn-danger btn-sm"><i class="fa fa-trash-o "></i></button>
+																					<button id="delete" value="<?= $item['kode'] ?>" class="btn btn-danger btn-sm"><i class="fa fa-trash-o "></i></button>
 																			</td>
 																	</tr>
 															<?php } ?>

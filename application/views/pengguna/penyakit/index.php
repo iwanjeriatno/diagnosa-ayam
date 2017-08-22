@@ -13,11 +13,11 @@
                             <div class="container">
                               <h4 class="pull-left"><i class="fa fa-angle-right"></i> Data <?= $path ?></h4>
                               <div class="btn-group pull-right">
-                                <a type="button" class=" btn btn-warning btn-round" href="<?= site_url('gejala/create') ?>">
+                                <a type="button" class=" btn btn-warning btn-round" href="<?= site_url('penyakit/create') ?>">
                                   <i class="fa fa-plus" aria-hidden="true"></i> &nbsp; Tambah Data
                                 </a>
-                                <a type="button" class="btn btn-success btn-round" href="<?= site_url('gejala/relasi-solusi') ?>">
-                                  Gejala Ke Solusi &nbsp; <i class="fa fa-retweet" aria-hidden="true"></i>
+                                <a type="button" class="btn btn-success btn-round" href="<?= site_url('penyakit/relasi-gejala') ?>">
+                                  Penyakit Ke Gejala &nbsp; <i class="fa fa-retweet" aria-hidden="true"></i>
                                 </a>
                               </div>
                             </div>
@@ -26,35 +26,47 @@
                               <tr>
                                   <th></th>
                                   <th>No</th>
-                                  <th>Kode Gejala</th>
-                                  <th>Nama Gejala</th>
-                                  <th>Gejala Awal (Ya)</th>
-                                  <th>Gejala Awal (Tidak)</th>
+                                  <th>Kode Penyakit</th>
+                                  <th>Jenis Penyakit</th>
+                                  <th>Nama Latin</th>
+                                  <th>Keterangan</th>
                                   <th>Aksi</th>
                               </tr>
                               </thead>
+                              <tfoot>
+                              <tr>
+                                  <th></th>
+                                  <th>No</th>
+                                  <th>Kode Penyakit</th>
+                                  <th>Jenis Penyakit</th>
+                                  <th>Nama Latin</th>
+                                  <th>Keterangan</th>
+                                  <th>Aksi</th>
+                              </tr>
+                            </tfoot>
                               <tbody>
                                 <?php
                                   $no = 1;
-                                  foreach ($gejala as $item) { ?>
+                                  foreach ($penyakit as $item) { ?>
                                     <tr>
                                         <td></td>
                                         <td><?= $no++ ?></td>
-                                        <td><?= $item['kd_gejala'] ?></td>
-                                        <td><?= $item['nama_gejala'] ?></td>
-                                        <td><?= $item['gejala_awal_ya'] ?></td>
-                                        <td><?= $item['gejala_awal_tidak'] ?></td>
+                                        <td><?= $item['kd_penyakit'] ?></td>
+                                        <td><?= $item['jenis_penyakit'] ?></td>
+                                        <td><?= $item['nama_latin'] ?></td>
+                                        <td><?= $item['keterangan'] ?></td>
                                         <td>
-                                            <a href="<?= site_url('gejala/'.$item['id'].'/edit') ?>" class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i></a>
+                                            <a href="<?= site_url('penyakit/'.$item['id'].'/edit') ?>" class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i></a>
                                             <button data-toggle="modal" data-target="#deleteModal" class="btn btn-danger btn-sm"><i class="fa fa-trash-o "></i></button>
                                         </td>
                                     </tr>
                                 <?php } ?>
                               </tbody>
                           </table>
-                          <?php include('delete.php') ?>
+
                         </div>
 
+                          <?php include('delete.php') ?>
 
                       </div><!-- /content-panel -->
 

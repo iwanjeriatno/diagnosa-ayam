@@ -7,16 +7,16 @@
     <meta name="author" content="Dashboard">
     <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 
-    <title>DASHGUM - Bootstrap Admin Template</title>
+    <title>Sistem Pakar - Diagnosa Penyakit Ayam</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <link href="<?= base_url('assets/css/bootstrap.css') ?>" rel="stylesheet">
     <!--external css-->
-    <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link href="<?= base_url('assets/font-awesome/css/font-awesome.css') ?>" rel="stylesheet" />
 
     <!-- Custom styles for this template -->
-    <link href="assets/css/style.css" rel="stylesheet">
-    <link href="assets/css/style-responsive.css" rel="stylesheet">
+    <link href="<?= base_url('assets/css/style.css') ?>" rel="stylesheet">
+    <link href="<?= base_url('assets/css/style-responsive.css') ?>" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -33,33 +33,42 @@
 
 	  <div id="login-page">
 	  	<div class="container">
+        <div class="col-sm-offset-9 col-sm-3">
 
-		      <form class="form-login" action="index.html">
-		        <h2 class="form-login-heading">sign in now</h2>
+
+		      <form class="form-login" action="<?= site_url('login/login')?>" method="post">
+		        <h2 class="form-login-heading">Login</h2>
 		        <div class="login-wrap">
-		            <input type="text" class="form-control" placeholder="User ID" autofocus>
+		            <input type="text" class="form-control" name="username" placeholder="Username" autofocus autocomplete="off">
 		            <br>
-		            <input type="password" class="form-control" placeholder="Password">
-		            <label class="checkbox">
+		            <input type="password" class="form-control" name="password" placeholder="Password">
+                <br>
+                <select class="form-control" name="role">
+                  <option value="">Masuk Sebagai </option>
+                  <option value="pakar">Pakar</option>
+                  <option value="pengguna">Pengguna</option>
+                </select>
+                <br>
+		            <!-- <label class="checkbox">
 		                <span class="pull-right">
 		                    <a data-toggle="modal" href="login.html#myModal"> Forgot Password?</a>
 
 		                </span>
-		            </label>
-		            <button class="btn btn-theme btn-block" href="index.html" type="submit"><i class="fa fa-lock"></i> SIGN IN</button>
+		            </label> -->
+		            <button class="btn btn-warning btn-block" type="submit"><i class="fa fa-lock"></i> LOGIN</button>
 		            <hr>
 
-		            <div class="login-social-link centered">
+		            <!-- <div class="login-social-link centered">
 		            <p>or you can sign in via your social network</p>
 		                <button class="btn btn-facebook" type="submit"><i class="fa fa-facebook"></i> Facebook</button>
 		                <button class="btn btn-twitter" type="submit"><i class="fa fa-twitter"></i> Twitter</button>
-		            </div>
-		            <div class="registration">
+		            </div> -->
+		            <!-- <div class="registration">
 		                Don't have an account yet?<br/>
 		                <a class="" href="#">
 		                    Create an account
 		                </a>
-		            </div>
+		            </div> -->
 
 		        </div>
 
@@ -86,19 +95,21 @@
 		          <!-- modal -->
 
 		      </form>
+        </div>
+
 
 	  	</div>
 	  </div>
 
     <!-- js placed at the end of the document so the pages load faster -->
-    <script src="assets/js/jquery.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="<?= base_url('assets/js/jquery.js') ?>"></script>
+    <script src="<?= base_url('assets/js/bootstrap.min.js') ?>"></script>
 
     <!--BACKSTRETCH-->
     <!-- You can use an image of whatever size. This script will stretch to fit in any screen size.-->
-    <script type="text/javascript" src="assets/js/jquery.backstretch.min.js"></script>
+    <script type="text/javascript" src="<?= base_url('assets/js/jquery.backstretch.min.js') ?>"></script>
     <script>
-        $.backstretch("assets/img/login-bg.jpg", {speed: 500});
+        $.backstretch("<?= base_url('assets/img/bg.jpg') ?>", {speed: 500});
     </script>
 
 

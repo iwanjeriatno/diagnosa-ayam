@@ -9,7 +9,7 @@
             <div class="content-panel">
 
                   <div class="container">
-                    <h4 class="pull-left"><i class="fa fa-angle-right"></i> Relasi <?= $path ?></h4>
+                    <h4 class="pull-left"><i class="fa fa-angle-right"></i> <?= $path ?></h4>
                     <a class="pull-right btn btn-warning" href="javascript:window.history.go(-1);"><i class="fa fa-chevron-left" aria-hidden="true"></i> Kembali</a>
                   </div>
                   <hr>
@@ -42,9 +42,8 @@
 
                   <div class="row form-group">
 
-
 											<?php foreach ($gejala as $item): ?>
-												<?php if ($item['id'] <= $total_gejala/2): ?>
+												<?php if ($total_gejala/2): ?>
 
 														<div class="col-sm-6">
 
@@ -139,31 +138,42 @@
 												</div>
 												<hr>
 
-												<table class="table table-striped table-advance table-hover datatables" id="datatables">
+												<table class="table table-striped table-advance table-hover datatables display" id="datatables">
 														<thead>
 														<tr>
+																<th></th>
 																<th>No</th>
 																<th>Kode Penyakit</th>
 																<th>Kode Gejala</th>
 																<th>Aksi</th>
 														</tr>
 														</thead>
+														<tfoot>
+														<tr>
+																<th></th>
+																<th>No</th>
+																<th>Kode Penyakit</th>
+																<th>Kode Gejala</th>
+																<th>Aksi</th>
+														</tr>
+													</tfoot>
 														<tbody>
 															<?php
 																$no = 1;
 																foreach ($penyakit_gejala as $item) { ?>
 																	<tr>
+																			<td></td>
 																			<td><?= $no++ ?></td>
 																			<td><?= '('.$item['kd_penyakit'] .') - '. $item['jenis_penyakit'] ?></td>
 																			<td><?= '('.$item['kd_gejala'] .') - '. $item['nama_gejala'] ?></td>
 																			<td>
-																					<button data-toggle="modal" data-target="#deleteModal" class="btn btn-danger btn-sm"><i class="fa fa-trash-o "></i></button>
+																					<button id="delete" value="<?= $item['kode'] ?>" class="btn btn-danger btn-sm"><i class="fa fa-trash-o "></i></button>
 																			</td>
 																	</tr>
 															<?php } ?>
 														</tbody>
 												</table>
-												<?php include('delete-relasi.php') ?>
+												<?php include('delete.php') ?>
 
 									</div>
 									</div>
