@@ -4,7 +4,7 @@
         <!-- sidebar menu start-->
         <ul class="sidebar-menu" id="nav-accordion">
 
-            <p class="centered"><a href="<?= site_url() ?>"><img src="<?= site_url() ?>assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
+            <p class="centered"><a href="<?= site_url() ?>"><img src="<?= base_url('assets/img/ui-sam.jpg') ?>" class="img-circle" width="60"></a></p>
             <h5 class="centered">Marcel Newman</h5>
 
             <li class="mt">
@@ -38,7 +38,7 @@
               </li>
 
               <li class="sub-menu">
-                  <a href="<?= site_url('base-pengetahuan') ?>" >
+                  <a href="<?= site_url('rule') ?>" >
                       <i class="fa fa-thermometer-half" aria-hidden="true"></i>
                       <span>Base Pengetahuan</span>
                   </a>

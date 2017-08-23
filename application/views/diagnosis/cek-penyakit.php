@@ -1,4 +1,3 @@
-*********************************************************************************************************************************************************** -->
 <!--main content start-->
 <section id="main-content">
 <section class="wrapper">
@@ -16,7 +15,8 @@
                             </div>
                             <hr>
 
-                            <?= form_open('diagnosis/cek-penyakit'); ?>
+                            <form class="form-horizontal">
+
 
                               <?php foreach ($penyakit as $item): ?>
 
@@ -37,16 +37,8 @@
                                       </div>
                                       <h4>nama_gejala</h4> -->
 
-                                      <?php
-
-                                        $data = array(
-                                          'name'  => 'kd_penyakit',
-                                          'value' => $item['kd_penyakit'],
-                                        );
-
-                                        echo form_radio($data)
-
-                                      ?> <b style="font-size:1.2em"><?= '('.$item['kd_penyakit'] .') - '. $item['jenis_penyakit'] ?></b>
+                                      <input type="radio" name="kd_penyakit" value="<?= $item['kd_penyakit'] ?>" id="penyakit">
+                                      <b style="font-size:1.2em"><?= '('.$item['kd_penyakit'] .') - '. $item['jenis_penyakit'] ?></b>
 
                                     </div>
 
@@ -54,15 +46,10 @@
                               <?php endforeach; ?>
                             </div>
 
+                            <a id="diagnosa" href="" class="btn btn-warning pull-right btn-block">Diagnosa</a>
 
-                            <?php
-                                $submit = array(
-                                  'class' => 'btn btn-warning pull-right btn-block',
-                                  'value' => 'Pertanyaan Selanjutnya',
-                                );
+                           </form>
 
-                                echo form_submit($submit);
-                             ?>
 
                              <p style="text-align:center; margin-top:60px; color:blue">
                                Silahkan Pilih Penyakit Terlebih Dahulu Yang Menyerang Pada Hewan Ayam!

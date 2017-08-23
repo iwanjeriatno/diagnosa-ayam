@@ -48,7 +48,7 @@
                   </div><!-- /row mt -->
 
 <div class="row mt">
-  <a class="btn btn-primary btn-round btn-block btn-lg" type="button" href="<?= site_url('diagnosis/penyakit') ?>">Mulai Diagnosa!</a>
+  <a class="btn btn-primary btn-round btn-block btn-lg" type="button" href="<?= site_url('diagnosis') ?>">Mulai Diagnosa!</a>
 </div>
 
         <div class="row mt">

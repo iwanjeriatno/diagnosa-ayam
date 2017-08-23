@@ -8,6 +8,7 @@ class Diagnosis extends CI_Controller {
     $this->load->database();
 		$this->load->model('gejala_model');
 		$this->load->model('penyakit_model');
+		$this->load->model('diagnosis_model');
 
 		// session username
 		$pengguna = $this->session->userdata('username');
@@ -83,24 +84,33 @@ class Diagnosis extends CI_Controller {
     }
   }
 
-	// diagnosa
+
+	// diagnosa-gejala
 	public function diagnosa()
 	{
-			// last uri
-			@$kode     = end($this->uri->segment_array());
-die($kode);
-			if($kode == "") {
-				$kode = "";
-				$data['gejala'] = $this->diagnosis_model->gejala($kode);
+			$init = 'G001';
+			$data['gejala'] = $this->diagnosis_model->gejala($init);
 
-				$this->load->view('pakar/layouts/header');
-		    $this->load->view('pakar/layouts/sidebar');
-		    $this->load->view('diagnosis/cek-gejala', $data);
-		    $this->load->view('pakar/layouts/footer');
-
-			}
+			$this->load->view('pakar/layouts/header');
+	    $this->load->view('pakar/layouts/sidebar');
+	    $this->load->view('diagnosis/diagnosa', $data);
+	    $this->load->view('pakar/layouts/footer');
 	}
 
+	// diagnosa
+	public function diagnosa_gejala()
+	{
+		// last uri
+		@$kode     = end($this->uri->segment_array());
+		$data['gejala'] 	= $this->diagnosis_model->gejala($kode);
+		$data['penyakit']	= $this->diagnosis_model->penyakit($kode);
+
+		$this->load->view('pakar/layouts/header');
+		$this->load->view('pakar/layouts/sidebar');
+		$this->load->view('diagnosis/diagnosa', $data);
+		$this->load->view('pakar/layouts/footer');
+
+	}
 }
 
 ?>

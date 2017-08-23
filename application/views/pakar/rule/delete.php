@@ -12,7 +12,7 @@
 		      </div>
 		      <div class="modal-footer">
 		        <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
-		        <a id="modal_penyakit_gejala" type="button" class="btn btn-info" href="">Ya</a>
+		        <a id="modal_rule" type="button" class="btn btn-info" href="">Ya</a>
 		      </div>
 		    </div>
 		  </div>

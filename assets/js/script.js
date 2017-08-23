@@ -36,4 +36,15 @@
             $('#deleteModal').modal('show');
         });
 
+        // -------------------------
+        //  display rule
+        // -------------------------
+        $(document).on('click', '#delete', function(e) {
+            e.preventDefault();
+            // mengambil value dari button
+            var id_rule = $(this).val();
+            $('#modal_rule').attr('href', base_url+'/rule/delete/'+id_rule);
+            $('#deleteModal').modal('show');
+        });
+
   });

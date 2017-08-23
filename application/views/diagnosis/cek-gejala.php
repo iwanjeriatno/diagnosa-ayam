@@ -1,8 +1,6 @@
-*********************************************************************************************************************************************************** -->
 <!--main content start-->
 <section id="main-content">
 <section class="wrapper">
-          	<h3><i class="fa fa-angle-right"></i> Menu <?= $path ?></h3>
 				<div class="row">
 	                  <div class="col-md-12">
 
@@ -11,16 +9,16 @@
 
                           <div class="row form-group">
                             <div class="container">
-                              <h4 class="pull-left"><i class="fa fa-angle-right"></i> Cek <?= $diagnosa ?></h4>
-                              <a class="pull-right btn btn-warning" href="javascript:window.history.go(-1);"><i class="fa fa-chevron-left" aria-hidden="true"></i> Kembali</a>
+                              <h4 class="pull-left"><i class="fa fa-angle-right"></i> Cek Gejala</h4>
+															<a class="pull-right btn btn-warning" href="javascript:window.history.go(-1);"><i class="fa fa-chevron-left" aria-hidden="true"></i> Kembali</a>
                             </div>
                             <hr>
 
-                            <?= form_open('diagnosis/cek-gejala'); ?>
+                            <form class="form-horizontal">
 
-                              <?php $no = 1; foreach ($gejala as $item): ?>
+                              <?php foreach ($gejala as $item): ?>
 
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-6" style="padding: 10px">
 
                                       <!-- <div class="switch switch-square has-switch"
                                            data-on-label="<i class=' fa fa-check'></i>"
@@ -37,16 +35,8 @@
                                       </div>
                                       <h4>nama_gejala</h4> -->
 
-                                      <?php
-
-                                        $data = array(
-                                          'name' => 'kd_gejala-'.$no,
-                                          'value' => $item['kd_gejala'],
-                                        );
-
-                                        echo form_checkbox($data)
-
-                                      ?> <b style="font-size:1.2em"><?= '('.$item['kd_gejala'] .') - '. $item['nama_gejala'] ?></b>
+                                      <input type="checkbox" name="kd_gejala[]" value="<?= $item['kd_gejala'] ?>" id="gejala">
+                                      <b style="font-size:1.2em"><?= '('.$item['kd_gejala'] .') - '. $item['nama_gejala'] ?></b>
 
                                     </div>
 
@@ -54,21 +44,9 @@
                               <?php endforeach; ?>
                             </div>
 
+                            <a id="lanjut" href="" class="btn btn-warning pull-right btn-block">Diagnosa</a>
 
-                            <?php
-                                $hidden = array(
-                                  'name' => 'jmlh_gejala',
-                                  'value'=> $no-1,
-                                );
-
-                                $submit = array(
-                                  'class' => 'btn btn-warning pull-right btn-block',
-                                  'value' => 'Proses',
-                                );
-
-                                echo form_hidden($hidden);
-                                echo form_submit($submit);
-                             ?>
+                           </form>
 
                              <p style="text-align:center; margin-top:60px; color:blue">
                                	Silahkan Pilih Diagnosa Beberapa Gejala!

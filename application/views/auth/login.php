@@ -10,7 +10,7 @@
     <title>Sistem Pakar - Diagnosa Penyakit Ayam</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="<?= base_url('assets/css/bootstrap.css') ?>" rel="stylesheet">
+    <link href="<?= base_url('assets/css/bootstrap.min.css') ?>" rel="stylesheet">
     <!--external css-->
     <link href="<?= base_url('assets/font-awesome/css/font-awesome.css') ?>" rel="stylesheet" />
 

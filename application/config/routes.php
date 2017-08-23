@@ -12,10 +12,12 @@ $route['login/login']    = 'login/login';
 $route['pakar']     = 'pakar';
 
 // diagnosis
-$route['diagnosis/penyakit']           = 'diagnosis/penyakit';
-$route['diagnosis/cek-penyakit']       = 'diagnosis/cekPenyakit';
-$route['diagnosis/gejala/kode=(:any)'] = 'diagnosis/diagnosa';
-$route['diagnosis/cek-gejala']         = 'diagnosis/cekGejala';
+$route['diagnosis']                      = 'diagnosis/diagnosa';
+$route['diagnosis/gejala/(:any)']        = 'diagnosis/diagnosa_gejala';
+
+$route['diagnosis/cek-penyakit']         = 'diagnosis/cekPenyakit';
+$route['diagnosis/gejala/(:any)/(:any)'] = 'diagnosis/diagnosa_gejala';
+$route['diagnosis/cek-gejala']           = 'diagnosis/cekGejala';
 
 // penyakit
 $route['penyakit/delete/(:any)']                 = 'penyakit/delete/$1';
@@ -43,11 +45,11 @@ $route['solusi']               = 'solusi';
 $route['solusi/(:any)']        = 'solusi/show/$1';
 
 // base-pengetahuan
-$route['base-pengetahuan/delete/(:any)'] = 'base_pengetahuan/delete/$1';
-$route['base-pengetahuan/(:any)/edit']   = 'base_pengetahuan/edit/$1';
-$route['base-pengetahuan/create']        = 'base_pengetahuan/create';
-$route['base-pengetahuan']               = 'base_pengetahuan';
-$route['base-pengetahuan/(:any)']        = 'base_pengetahuan/show/$1';
+$route['rule/delete/(:any)'] = 'rule/delete/$1';
+$route['rule/(:any)/edit']   = 'rule/edit/$1';
+$route['rule/create']        = 'rule/create';
+$route['rule']               = 'rule';
+$route['rule/(:any)']        = 'rule/show/$1';
 
 
 $route['default_controller']   = 'home/dashboard';
