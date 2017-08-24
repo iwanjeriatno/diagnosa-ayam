@@ -11,12 +11,23 @@ class Solusi_model extends CI_Model
 	public function index($kode = FALSE)
 	{
 		if($kode == FALSE) {
-			$query = $this->db->get('solusi');
+			$query = $this->db->select('a.id as kode, a.*, b.*')
+												->from('solusi a')
+												->join('penyakit b', 'b.kd_penyakit = a.kd_penyakit', 'left')
+												->order_by('a.kd_solusi', 'asc')
+												->get();
 
 			return $query->result_array();
 		}
 		$query = $this->db->get_where('solusi', array('kd_solusi' => $kode));
 		return $query->row_array();
+	}
+
+	// penyakit
+	public function penyakit()
+	{
+		$query = $this->db->get('penyakit');
+		return $query->result_array();
 	}
 
 	// total solusi
@@ -31,7 +42,7 @@ class Solusi_model extends CI_Model
 	public function kd_solusi() {
 		$query     = $this->db->get('solusi');
 		$kode      = $query->num_rows();
-		$kd_solusi = sprintf("%07d", $kode+1);
+		$kd_solusi = sprintf("%03d", $kode+1);
 		return "S".$kd_solusi;
 	}
 
@@ -45,7 +56,8 @@ class Solusi_model extends CI_Model
 	{
 		$data      = array(
 			'kd_solusi'   => $this->input->post('kd_solusi'),
-			'solusi' => $this->input->post('solusi'),
+			'kd_penyakit' => $this->input->post('kd_penyakit'),
+			'solusi'      => ucfirst($this->input->post('solusi')),
 		);
 		return $this->db->insert('solusi', $data);
 	}
@@ -54,7 +66,8 @@ class Solusi_model extends CI_Model
 	{
 		$data = array(
 			'kd_solusi'   => $this->input->post('kd_solusi'),
-			'solusi' => $this->input->post('solusi'),
+			'kd_penyakit' => $this->input->post('kd_penyakit'),
+			'solusi'      => ucfirst($this->input->post('solusi')),
 		);
 		$this->db->where('id', $id);
 		return $this->db->update('solusi', $data);

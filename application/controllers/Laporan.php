@@ -1,14 +1,12 @@
 <?php
 
-class Diagnosis extends CI_Controller {
+class Laporan extends CI_Controller {
 
 	public function __construct()
 	{
 		parent::__construct();
-    $this->load->database();
-		$this->load->model('gejala_model');
-		$this->load->model('penyakit_model');
-		$this->load->model('diagnosis_model');
+    $this->load->model('laporan_model');
+    $this->load->library('dompdf_gen');
 
 		// session username
 		$pengguna = $this->session->userdata('username');

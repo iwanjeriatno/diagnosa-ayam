@@ -12,8 +12,10 @@ class Rule extends CI_Controller {
 	{
 		$data['path']     = 'Base Pengetahuan';
 
-		$data['rule'] = $this->rule_model->index();
-		$data['rule1'] = $this->rule_model->rule('P0');
+		$data['rule']    = $this->rule_model->index();
+		$data['rule1']   = $this->rule_model->rule('P0');
+		$data['total']   = $this->rule_model->total_rule('P0');
+		$data['initial'] = $this->rule_model->initial('P013');
 
 		$this->load->view('pakar/layouts/header');
 		$this->load->view('pakar/layouts/sidebar');

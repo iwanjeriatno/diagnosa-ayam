@@ -22,7 +22,8 @@ class Solusi extends CI_Controller {
 	public function show($no)
 	{
 		$data['solusi_item'] = $this->solusi_model->index($no);
-		$data['path'] = 'Solusi';
+		$data['path']        = 'Solusi';
+
 		$this->load->view('layouts/header', $data);
 		$this->load->view('news/details', $data);
 		$this->load->view('layouts/footer');
@@ -30,8 +31,9 @@ class Solusi extends CI_Controller {
 
 	public function create()
 	{
-		$data['path'] = 'Solusi';
-		$data['kd_solusi']   = $this->solusi_model->kd_solusi();
+		$data['path']      = 'Solusi';
+		$data['kd_solusi'] = $this->solusi_model->kd_solusi();
+		$data['penyakit']  = $this->solusi_model->penyakit();
 
 		$this->form_validation->set_rules('kd_solusi','Kode Solusi','required');
 		$this->form_validation->set_rules('solusi','Solusi','required');
@@ -50,6 +52,7 @@ class Solusi extends CI_Controller {
 	public function edit($id)
 	{
 		$data['path'] = 'Solusi';
+		$data['penyakit']  = $this->solusi_model->penyakit();
 
 		$this->form_validation->set_rules('kd_solusi','Kode Solusi','required');
 		$this->form_validation->set_rules('solusi','Solusi','required');

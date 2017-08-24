@@ -18,11 +18,15 @@
     <link href="<?= base_url('assets/css/style.css') ?>" rel="stylesheet">
     <link href="<?= base_url('assets/css/style-responsive.css') ?>" rel="stylesheet">
 
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    <style media="screen">
+      body {
+        background-image: url(<?= base_url('assets/img/bg.png') ?>);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-origin: content-box;
+      }
+    </style>
   </head>
 
   <body>
@@ -108,9 +112,6 @@
     <!--BACKSTRETCH-->
     <!-- You can use an image of whatever size. This script will stretch to fit in any screen size.-->
     <script type="text/javascript" src="<?= base_url('assets/js/jquery.backstretch.min.js') ?>"></script>
-    <script>
-        $.backstretch("<?= base_url('assets/img/bg.jpg') ?>", {speed: 500});
-    </script>
 
 
   </body>

@@ -30,6 +30,28 @@
 													?>
                       </div>
                   </div>
+
+                  <div class="row form-group">
+                      <label class="col-sm-2 col-sm-offset-2 control-label">Solusi</label>
+                      <div class="col-sm-6">
+												<?php
+
+													$options = array();
+													foreach ($penyakit as $item){
+															$options[$item['kd_penyakit']] = $item['jenis_penyakit'];
+													}
+
+													$kd_penyakit = array(
+														'class'		=> 'form-control',
+														'name'	  => 'kd_penyakit',
+													);
+
+													echo form_dropdown($kd_penyakit, $options);
+
+												 ?>
+                      </div>
+                  </div>
+
                   <div class="row form-group">
                       <label class="col-sm-2 col-sm-offset-2 control-label">Solusi</label>
                       <div class="col-sm-6">
@@ -44,6 +66,7 @@
 												?>
                       </div>
                   </div>
+
 									<div class="row form-group">
 										<div class="col-sm-8 col-sm-offset-2 pull-right">
 											<?php

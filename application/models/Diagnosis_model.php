@@ -40,7 +40,11 @@ class Diagnosis_model extends CI_Model
 	// penyakit
 	public function penyakit($kode)
 	{
-		$query = $this->db->where('kd_penyakit', $kode)->get('penyakit');
+		$query = $this->db->select('a.id as kode, a.*, b.*')
+											->from('solusi a')
+											->join('penyakit b', 'b.kd_penyakit = a.kd_penyakit', 'left')
+											->where('a.kd_penyakit', $kode)
+											->get();
 
 		return $query->row();
 	}

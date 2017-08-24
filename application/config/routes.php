@@ -12,8 +12,9 @@ $route['login/login']    = 'login/login';
 $route['pakar']     = 'pakar';
 
 // diagnosis
-$route['diagnosis']                      = 'diagnosis/diagnosa';
-$route['diagnosis/gejala/(:any)']        = 'diagnosis/diagnosa_gejala';
+$route['diagnosis']               = 'diagnosis/diagnosa';
+$route['diagnosis/hasil']         = 'diagnosis/hasil_diagnosa';
+$route['diagnosis/gejala/(:any)'] = 'diagnosis/diagnosa_gejala';
 
 $route['diagnosis/cek-penyakit']         = 'diagnosis/cekPenyakit';
 $route['diagnosis/gejala/(:any)/(:any)'] = 'diagnosis/diagnosa_gejala';

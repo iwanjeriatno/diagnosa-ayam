@@ -6,14 +6,13 @@
 
           <div class="alert">
           	<h2>Hey! Read Me :D</h2>
-          	<p>I made this pen a looooong time ago. If you are looking a better example of how to style radio buttons on forms, take a look at my <a target="_blank"  href="https://codepen.io/AngelaVelasquez/details/BWXbxP">New version</a>. Also I wrote a <a target="_blank" href="https://codepen.io/AngelaVelasquez/post/css-styling-radio-button">post</a> about this.</p>
-          </div>
+          	<p>Silahkan lakukan Identifikasi Penyakit yang pada Ayam Anda dengan menjawab semua gejala yang terjadi!</p>
 
+          </div>
           <?php if ($gejala): ?>
 
-            <div id="pertanyaan" class="container">
 
-              <form>
+              <form id="pertanyaan">
                 <div  style="text-align:center">
                   <b>(<?= $gejala->kd_gejala ?>)</b>
                   <h2>Apakah <?= $gejala->nama_gejala ?> ?</h2>
@@ -41,13 +40,11 @@
                 </div>
               </form>
 
-            </div>
 
           <?php elseif ($penyakit): ?>
 
-            <div id="pertanyaan" class="container">
 
-              <form>
+              <form id="pertanyaan" >
                 <div  style="text-align:center">
                   <b>(<?= $penyakit->kd_penyakit ?>)</b>
                   <h2>Penyakit ayam Anda adalah <?= $penyakit->jenis_penyakit ?> ?</h2>
@@ -56,11 +53,12 @@
 
                 <div class="clearfix"></div>
                   <div class="" style="margin-top:50px; text-align:center">
-                    <a id="solusi" href="" type="submit" class="btn btn-success btn-lg btn-block">Lihat Solusi</a>
+                    <a id="solusi" type="button" data-target="#hasil" data-toggle="modal" class="btn btn-success btn-lg btn-block">Lihat Solusi</a>
                 </div>
               </form>
 
-            </div>
+              <?php include 'hasil.php' ?>
+
 
           <?php endif; ?>
 

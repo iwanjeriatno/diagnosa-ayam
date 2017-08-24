@@ -2,7 +2,7 @@
 <!--main content start-->
 <section id="main-content">
 <section class="wrapper">
-          	<h3><i class="fa fa-angle-right"></i><?= $path ?></h3>
+          	<h3><i class="fa fa-angle-right"></i> <?= $path ?></h3>
 				<div class="row">
 	                  <div class="col-md-12">
 
@@ -15,9 +15,6 @@
                               <div class="btn-group pull-right">
                                 <a type="button" class=" btn btn-warning btn-round" href="<?= site_url('gejala/create') ?>">
                                   <i class="fa fa-plus" aria-hidden="true"></i> &nbsp; Tambah Data
-                                </a>
-                                <a type="button" class="btn btn-success btn-round" href="<?= site_url('gejala/relasi-solusi') ?>">
-                                  Gejala Ke Solusi &nbsp; <i class="fa fa-retweet" aria-hidden="true"></i>
                                 </a>
                               </div>
                             </div>

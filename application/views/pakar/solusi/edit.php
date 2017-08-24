@@ -31,6 +31,29 @@
                       </div>
 											<?= form_error('kd_solusi') ?>
                   </div>
+
+									<div class="row form-group">
+                      <label class="col-sm-2 col-sm-offset-2 control-label">Solusi</label>
+                      <div class="col-sm-6">
+												<?php
+
+													$options = array();
+													foreach ($penyakit as $item){
+															$options[$item['kd_penyakit']] = $item['jenis_penyakit'];
+													}
+
+													$kd_penyakit = array(
+														'class' => 'form-control',
+														'name'  => 'kd_penyakit',
+														'value' => $solusi_item['kd_penyakit'],
+													);
+
+													echo form_dropdown($kd_penyakit, $options);
+
+												 ?>
+                      </div>
+                  </div>
+
                   <div class="row form-group">
                       <label class="col-sm-2 col-sm-offset-2 control-label">Nama Solusi</label>
                       <div class="col-sm-6">

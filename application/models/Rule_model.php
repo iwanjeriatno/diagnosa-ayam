@@ -11,9 +11,11 @@ class Rule_model extends CI_Model
 	public function index($kode = FALSE)
 	{
 		if($kode == FALSE) {
-			$query = $this->db->select('a.*, b.nama_gejala, b.kd_gejala')
+			$query = $this->db->select('a.*, b.nama_gejala, b.kd_gejala, d.*, c.jenis_penyakit')
 												->from('rule a')
 												->join('gejala b', 'b.kd_gejala = a.kd_gejala', 'left')
+												->join('penyakit_gejala d', 'd.kd_gejala = b.kd_gejala', 'left')
+												->join('penyakit c', 'c.kd_penyakit = d.kd_penyakit', 'left')
 												->get();
 
 			return $query->result_array();
@@ -40,13 +42,42 @@ class Rule_model extends CI_Model
 
 	public function rule($penyakit)
 	{
-		$query = $this->db->select('a.*, b.nama_gejala, b.kd_gejala')
+		$query = $this->db->select('a.*, b.nama_gejala, b.kd_gejala, d.*, c.jenis_penyakit')
+											->from('rule a')
+											->join('gejala b', 'b.kd_gejala = a.kd_gejala', 'left')
+											->join('penyakit_gejala d', 'd.kd_gejala = b.kd_gejala', 'left')
+											->join('penyakit c', 'c.kd_penyakit = d.kd_penyakit', 'left')
+											->like('jika_ya', $penyakit, 'after')
+											->or_like('jika_tidak', $penyakit, 'after')
+											->get();
+		return $query->result_array();
+	}
+
+	// total rule
+	public function total_rule($penyakit)
+	{
+		$query =  $this->db->select('a.*, b.nama_gejala, b.kd_gejala, d.*, c.jenis_penyakit')
+											->from('rule a')
+											->join('gejala b', 'b.kd_gejala = a.kd_gejala', 'left')
+											->join('penyakit_gejala d', 'd.kd_gejala = b.kd_gejala', 'left')
+											->join('penyakit c', 'c.kd_penyakit = d.kd_penyakit', 'left')
+											->like('jika_ya', $penyakit, 'after')
+											->or_like('jika_tidak', $penyakit, 'after')
+											->get();
+		$total = $query->num_rows();
+		return $total;
+	}
+
+	// karakter P0
+	public function initial($penyakit)
+	{
+		$query =  $this->db->select('a.*')
 											->from('rule a')
 											->join('gejala b', 'b.kd_gejala = a.kd_gejala', 'left')
 											->like('jika_ya', $penyakit, 'after')
 											->or_like('jika_tidak', $penyakit, 'after')
 											->get();
-		return $query->result_array();
+		return $query->row();
 	}
 
 	// penyakit gejala

@@ -5,16 +5,16 @@
         <ul class="sidebar-menu" id="nav-accordion">
 
             <p class="centered"><a href="<?= site_url() ?>"><img src="<?= base_url('assets/img/ui-sam.jpg') ?>" class="img-circle" width="60"></a></p>
-            <h5 class="centered"><?= ucwords($this->session->userdata('username')) ?></h5>
+            <h5 class="centered">Marcel Newman</h5>
 
-            <?php if($this->session->userdata('role') == 'pakar') : ?>
-              <li class="mt">
-                  <a class="active" href="<?= site_url() ?>">
-                      <i class="fa fa-dashboard"></i>
-                      <span>Dashboard</span>
-                  </a>
-              </li>
+            <li class="mt">
+                <a class="active" href="<?= site_url() ?>">
+                    <i class="fa fa-dashboard"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
 
+              <?php if($this->session->userdata('role') == 'pakar') : ?>
 
               <li class="sub-menu">
                   <a href="<?= site_url('penyakit') ?>" >
@@ -51,25 +51,34 @@
                   </a>
               </li>
 
-              <li class="sub-menu">
-                  <a href="<?= site_url('users') ?>" >
-                      <i class="fa fa-user" aria-hidden="true"></i>
-                      <span>Profil User</span>
-                  </a>
-              </li>
+            <?php elseif($this->session->userdata('role') == 'pengguna') : ?>
 
-              <br><br>
-
-              <li class="sub-menu">
-                  <a class="active" href="<?= site_url('settings') ?>" >
-                      <i class="fa fa-cog" aria-hidden="true"></i>
-                      <span>Settings</span>
-                  </a>
-              </li>
+            <li class="sub-menu">
+                <a href="<?= site_url('laporan') ?>" >
+                    <i class="fa fa-file-o"></i>
+                    <span>Diagnosa</span>
+                </a>
+            </li>
 
             <?php endif; ?>
 
             <br>
+
+            <li class="sub-menu">
+                <a href="<?= site_url('users') ?>" >
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                    <span>Users</span>
+                </a>
+            </li>
+
+            <br><br>
+
+            <li class="sub-menu">
+                <a class="active" href="<?= site_url('settings') ?>" >
+                    <i class="fa fa-cog" aria-hidden="true"></i>
+                    <span>Settings</span>
+                </a>
+            </li>
 
         </ul>
         <!-- sidebar menu end-->
