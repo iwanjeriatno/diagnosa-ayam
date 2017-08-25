@@ -2,7 +2,6 @@
 
 class Diagnosis_model extends CI_Model
 {
-
 	public function __construct()
 	{
 		$this->load->database();
@@ -37,6 +36,17 @@ class Diagnosis_model extends CI_Model
 		return $query->row();
 	}
 
+	// users
+	public function username($id_user)
+	{
+		$query = $this->db->select('username')
+											->from('users')
+											->where('id_user', $id_user)
+											->get();
+
+		return $query->row();
+	}
+
 	// penyakit
 	public function penyakit($kode)
 	{
@@ -47,5 +57,28 @@ class Diagnosis_model extends CI_Model
 											->get();
 
 		return $query->row();
+	}
+
+	// simpan hasil
+	public function store()
+	{
+		$data      = array(
+			'hasil_identifikasi' => $this->input->post('hasil_identifikasi'),
+			'pengobatan'         => $this->input->post('pengobatan'),
+			'id_user'            => $this->input->post('id_user'),
+		);
+		return $this->db->insert('hasil_identifikasi', $data);
+	}
+
+	// laporan
+	public function laporan($user)
+	{
+		$query = $this->db->select('a.*, b.*')
+											->from('hasil_identifikasi a')
+											->join('users b', 'b.id_user = a.id_user', 'left')
+											->where('b.id_user', $user)
+											->get();
+
+		return $query->result();
 	}
 }

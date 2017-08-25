@@ -2,11 +2,11 @@
 <section id="main-content">
 <section class="wrapper">
 
-        <div class="col-sm-8 col-sm-offset-2">
+        <div class="col-sm-8 col-sm-offset-3">
 
           <div class="alert">
-          	<h2>Hey! Read Me :D</h2>
-          	<p>Silahkan lakukan Identifikasi Penyakit yang pada Ayam Anda dengan menjawab semua gejala yang terjadi!</p>
+          	<h2>Hallo, <?= ucwords($this->session->userdata('username')) ?> !</h2>
+          	<p>Silahkan lakukan Identifikasi Penyakit pada Ayam Anda dengan menjawab semua gejala yang terjadi!</p>
 
           </div>
           <?php if ($gejala): ?>
@@ -59,6 +59,15 @@
 
               <?php include 'hasil.php' ?>
 
+          <?php else : ?>
+
+            <div class="col-lg-12 col-md-12 col-sm-12 mb">
+							<div class="twitter-panel pn">
+								<i class="fa fa-close fa-4x"></i>
+								<h3>Diagnosa Penyakit tidak bisa diketahui, <br> Silahkan melakukan diagnosa Kembali!</h3>
+								<a class="btn btn-primary btn-lg" href="<?= site_url('diagnosis') ?>">Diagnosa Lagi!</a>
+							</div>
+						</div>
 
           <?php endif; ?>
 

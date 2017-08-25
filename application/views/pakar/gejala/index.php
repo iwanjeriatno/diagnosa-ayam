@@ -24,8 +24,6 @@
                                   <th></th>
                                   <th>Kode Gejala</th>
                                   <th>Nama Gejala</th>
-                                  <th>Gejala Awal (Ya)</th>
-                                  <th>Gejala Awal (Tidak)</th>
                                   <th>Aksi</th>
                               </tr>
                               </thead>
@@ -34,8 +32,6 @@
                                   <th></th>
                                   <th>Kode Gejala</th>
                                   <th>Nama Gejala</th>
-                                  <th>Gejala Awal (Ya)</th>
-                                  <th>Gejala Awal (Tidak)</th>
                                   <th>Aksi</th>
                               </tr>
                             </tfoot>
@@ -46,8 +42,6 @@
                                         <td></td>
                                         <td><?= $item['kd_gejala'] ?></td>
                                         <td><?= $item['nama_gejala'] ?></td>
-                                        <td><?= $item['gejala_awal_ya'] ?></td>
-                                        <td><?= $item['gejala_awal_tidak'] ?></td>
                                         <td>
                                             <a href="<?= site_url('gejala/'.$item['id'].'/edit') ?>" class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i></a>
                                             <button id="delete" value="<?= $item['id'] ?>" class="btn btn-danger btn-sm"><i class="fa fa-trash-o "></i></button>

@@ -12,7 +12,7 @@
 		      </div>
 		      <div class="modal-footer">
 		        <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
-		        <a type="button" class="btn btn-info" href="<?= site_url('solusi/delete/'.$item['id']) ?>">Ya</a>
+		        <a id="modal_solusi" type="button" class="btn btn-info" href="<?= site_url('solusi/delete/'.$item['id']) ?>">Ya</a>
 		      </div>
 		    </div>
 		  </div>

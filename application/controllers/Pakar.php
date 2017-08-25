@@ -21,7 +21,7 @@ class Pakar extends CI_Controller {
 
 	}
 
-	public function index()
+	public function dashboard()
 	{
 		$data['total_penyakit'] = $this->penyakit_model->total_penyakit();
 		$data['total_gejala']   = $this->gejala_model->total_gejala();

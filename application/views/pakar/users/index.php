@@ -1,94 +1,55 @@
+<!--main content start-->
+<section id="main-content">
 <section class="wrapper">
-          	<h3><i class="fa fa-angle-right"></i> Basic Table Examples</h3>
+          	<h3><i class="fa fa-angle-right"></i> <?= $path ?></h3>
 				<div class="row">
-
 	                  <div class="col-md-12">
+
                       <div class="content-panel">
-                          <table class="table table-striped table-advance table-hover">
-	                  	  	  <h4><i class="fa fa-angle-right"></i> Advanced Table</h4>
+                        <div class="container">
+
+                          <table class="table table-striped table-advance table-hover datatables" id="datatables">
+                            <div class="container">
+                              <h4 class="pull-left"><i class="fa fa-angle-right"></i> Data <?= $path ?></h4>
+                              <div class="btn-group pull-right">
+                                <a type="button" class=" btn btn-warning btn-round" href="<?= site_url('users/create') ?>">
+                                  <i class="fa fa-plus" aria-hidden="true"></i> &nbsp; Tambah Pengguna
+                                </a>
+                              </div>
+                            </div>
 	                  	  	  <hr>
                               <thead>
                               <tr>
-                                  <th><i class="fa fa-bullhorn"></i> Company</th>
-                                  <th class="hidden-phone"><i class="fa fa-question-circle"></i> Descrition</th>
-                                  <th><i class="fa fa-bookmark"></i> Profit</th>
-                                  <th><i class=" fa fa-edit"></i> Status</th>
-                                  <th></th>
+                                  <th>No</th>
+                                  <th>ID Pengguna</th>
+                                  <th>Nama Pengguna</th>
+                                  <th>Aksi</th>
                               </tr>
                               </thead>
                               <tbody>
-                              <tr>
-                                  <td><a href="basic_table.html#">Company Ltd</a></td>
-                                  <td class="hidden-phone">Lorem Ipsum dolor</td>
-                                  <td>12000.00$ </td>
-                                  <td><span class="label label-info label-mini">Due</span></td>
-                                  <td>
-                                      <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
-                                      <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                                      <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
-                                  </td>
-                              </tr>
-                              <tr>
-                                  <td>
-                                      <a href="basic_table.html#">
-                                          Dashgum co
-                                      </a>
-                                  </td>
-                                  <td class="hidden-phone">Lorem Ipsum dolor</td>
-                                  <td>17900.00$ </td>
-                                  <td><span class="label label-warning label-mini">Due</span></td>
-                                  <td>
-                                      <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
-                                      <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                                      <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
-                                  </td>
-                              </tr>
-                              <tr>
-                                  <td>
-                                      <a href="basic_table.html#">
-                                          Another Co
-                                      </a>
-                                  </td>
-                                  <td class="hidden-phone">Lorem Ipsum dolor</td>
-                                  <td>14400.00$ </td>
-                                  <td><span class="label label-success label-mini">Paid</span></td>
-                                  <td>
-                                      <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
-                                      <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                                      <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
-                                  </td>
-                              </tr>
-                              <tr>
-                                  <td>
-                                      <a href="basic_table.html#">
-                                          Dashgum ext
-                                      </a>
-                                  </td>
-                                  <td class="hidden-phone">Lorem Ipsum dolor</td>
-                                  <td>22000.50$ </td>
-                                  <td><span class="label label-success label-mini">Paid</span></td>
-                                  <td>
-                                      <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
-                                      <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                                      <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
-                                  </td>
-                              </tr>
-                              <tr>
-                                  <td><a href="basic_table.html#">Total Ltd</a></td>
-                                  <td class="hidden-phone">Lorem Ipsum dolor</td>
-                                  <td>12120.00$ </td>
-                                  <td><span class="label label-warning label-mini">Due</span></td>
-                                  <td>
-                                      <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
-                                      <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                                      <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
-                                  </td>
-                              </tr>
+                                <?php
+                                  $no = 1;
+                                  foreach ($users as $item) { ?>
+                                    <tr>
+                                        <td><?= $no++ ?></td>
+                                        <td><?= $item['id_user'] ?></td>
+                                        <td><?= ucfirst($item['username']) ?></td>
+                                        <td>
+                                            <a href="<?= site_url('users/'.$item['id_user'].'/edit') ?>" class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i></a>
+                                            <button data-toggle="modal" data-target="#deleteModal" class="btn btn-danger btn-sm"><i class="fa fa-trash-o "></i></button>
+                                        </td>
+                                    </tr>
+                                <?php } ?>
                               </tbody>
                           </table>
+                          <?php include('delete.php') ?>
+                        </div>
+
+
                       </div><!-- /content-panel -->
 
-                  </div><!-- /col-md-12 -->
-            </div><!-- /row -->
+                    </div><!-- /col-md-12 -->
+              </div><!-- /row -->
 
-      </section><! --/wrapper -->
+		</section><! --/wrapper -->
+		</section><! --/wrapper -->

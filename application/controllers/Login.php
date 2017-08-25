@@ -22,6 +22,12 @@ class Login extends CI_Controller {
 		$password = $this->input->post('password');
 		$role     = $this->input->post('role');
 
+		$user = $this->login_model->show();
+
+		foreach ($user as $item) {
+			$id_user = $item->id_user;
+		}
+
 		$where = array(
 			'username'  => $username,
  			'password'  => md5($password),
@@ -31,17 +37,23 @@ class Login extends CI_Controller {
 		$cek = $this->login_model->login("users", $where)->num_rows();
 		if($cek > 0) {
 				$data_session = array(
+					'id_user'  => $id_user,
 					'username' => $username,
 					'role'		 => $role,
 					'status'   => 'login',
 				);
 
-				$this->session->set_userdata($data_session);
-
-				redirect(site_url('pakar'));
+				$session = $this->session->set_userdata($data_session);
 		}
 		else {
 			redirect(site_url('login'));
+		}
+
+		if($this->session->userdata('role') == 'pakar') {
+			redirect(site_url('dashboard'));
+		}
+		elseif($this->session->userdata('role') == 'pengguna') {
+			redirect(site_url('home'));
 		}
 	}
 

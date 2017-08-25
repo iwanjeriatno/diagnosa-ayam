@@ -9,11 +9,13 @@ $route['login/login']    = 'login/login';
 // ==============================================================================================
 // pakar
 // ==============================================================================================
-$route['pakar']     = 'pakar';
+$route['dashboard'] = 'pakar/dashboard';
+$route['home']      = 'pengguna/home';
 
 // diagnosis
 $route['diagnosis']               = 'diagnosis/diagnosa';
 $route['diagnosis/hasil']         = 'diagnosis/hasil_diagnosa';
+$route['diagnosis/laporan']       = 'diagnosis/laporan';
 $route['diagnosis/gejala/(:any)'] = 'diagnosis/diagnosa_gejala';
 
 $route['diagnosis/cek-penyakit']         = 'diagnosis/cekPenyakit';
@@ -52,8 +54,22 @@ $route['rule/create']        = 'rule/create';
 $route['rule']               = 'rule';
 $route['rule/(:any)']        = 'rule/show/$1';
 
+// users
+$route['users/delete/(:any)'] = 'users/delete/$1';
+$route['users/(:any)/edit']   = 'users/edit/$1';
+$route['users/create']        = 'users/create';
+$route['users']               = 'users';
+$route['users/(:any)']        = 'users/show/$1';
 
-$route['default_controller']   = 'home/dashboard';
+// laporan
+$route['laporan/delete/(:any)'] = 'laporan/delete/$1';
+$route['laporan/(:any)/edit']   = 'laporan/edit/$1';
+$route['laporan/create']        = 'laporan/create';
+$route['laporan']               = 'laporan';
+$route['laporan/(:any)']        = 'laporan/show/$1';
+
+
+$route['default_controller']   = 'login';
 $route['admin/(:any)']         = 'home/view/$1';
 $route['404_override']         = '';
 $route['translate_uri_dashes'] = FALSE;

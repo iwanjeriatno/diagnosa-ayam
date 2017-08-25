@@ -13,4 +13,11 @@ class Login_model extends CI_Model
     return $this->db->get_where($table, $where);
   }
 
+	public function show()
+	{
+		$query = $this->db->get('users');
+
+		return $query->result();
+	}
+
 }

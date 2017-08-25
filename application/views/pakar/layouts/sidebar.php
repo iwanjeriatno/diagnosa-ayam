@@ -1,10 +1,18 @@
 <!--sidebar start-->
 <aside>
-    <div id="sidebar"  class="nav-collapse ">
+    <div id="sidebar" class="nav-collapse"
+      <?php if($this->session->userdata('role') == 'pengguna') : ?>
+        style="
+                width:35%;
+                background-image: url(<?= base_url('assets/img/bg1.png') ?>);
+                background-size: cover;
+              ";
+      <?php endif ?>
+      >
         <!-- sidebar menu start-->
         <ul class="sidebar-menu" id="nav-accordion">
 
-            <p class="centered"><a href="<?= site_url() ?>"><img src="<?= base_url('assets/img/ui-sam.jpg') ?>" class="img-circle" width="60"></a></p>
+            <p class="centered"><a href="<?= site_url() ?>"><img src="<?= base_url('assets/img/pengguna.png') ?>" class="img-circle" width="60"></a></p>
             <h5 class="centered"><?= ucwords($this->session->userdata('username')) ?></h5>
 
             <?php if($this->session->userdata('role') == 'pakar') : ?>
@@ -51,19 +59,12 @@
                   </a>
               </li>
 
-              <li class="sub-menu">
-                  <a href="<?= site_url('users') ?>" >
-                      <i class="fa fa-user" aria-hidden="true"></i>
-                      <span>Profil User</span>
-                  </a>
-              </li>
-
               <br><br>
 
-              <li class="sub-menu">
-                  <a class="active" href="<?= site_url('settings') ?>" >
-                      <i class="fa fa-cog" aria-hidden="true"></i>
-                      <span>Settings</span>
+              <li class="sub-menu ">
+                  <a href="<?= site_url('users') ?>" class="active">
+                      <i class="fa fa-user" aria-hidden="true"></i>
+                      <span>Data Pengguna</span>
                   </a>
               </li>
 

@@ -9,6 +9,7 @@ class Diagnosis extends CI_Controller {
 		$this->load->model('gejala_model');
 		$this->load->model('penyakit_model');
 		$this->load->model('diagnosis_model');
+		$this->load->library('dompdf_gen');
 
 		// session username
 		$pengguna = $this->session->userdata('username');
@@ -102,8 +103,11 @@ class Diagnosis extends CI_Controller {
 	{
 		// last uri
 		@$kode     = end($this->uri->segment_array());
+		$id_user   = $this->session->userdata('id_user');
+
 		$data['gejala'] 	= $this->diagnosis_model->gejala($kode);
 		$data['penyakit']	= $this->diagnosis_model->penyakit($kode);
+		$data['username']	= $this->diagnosis_model->username($id_user);
 
 		$this->load->view('pakar/layouts/header');
 		$this->load->view('pakar/layouts/sidebar');
@@ -121,6 +125,39 @@ class Diagnosis extends CI_Controller {
 		$this->load->view('pakar/layouts/sidebar');
 		$this->load->view('diagnosis/hasil', $data);
 		$this->load->view('pakar/layouts/footer');
+
+		// validation
+		$this->form_validation->set_rules('hasil_identifikasi','Hasil Identifikasi','required');
+
+		if($this->form_validation->run() == FALSE) {
+			$this->load->view('pakar/layouts/header', $data);
+			$this->load->view('pakar/layouts/sidebar');
+			$this->load->view('diagnosis/hasil', $data);
+			$this->load->view('pakar/layouts/footer');
+		} else {
+			$this->diagnosis_model->store();
+			redirect('diagnosis/laporan');
+		}
+	}
+	// laporan
+	public function laporan()
+	{
+		$user             = $this->session->userdata('id_user');
+		$data['title']    = 'Cetak PDF Laporan';
+		$data['laporan']  = $this->diagnosis_model->laporan($user);
+		$data['username'] = $this->diagnosis_model->username($user);
+
+		$this->load->view('diagnosis/laporan', $data);
+
+		$paper_size  = 'A4'; //paper size
+		$orientation = 'landscape'; //tipe format kertas
+		$html = $this->output->get_output();
+
+		$this->dompdf->set_paper($paper_size, $orientation);
+		//Convert to PDF
+		$this->dompdf->load_html($html);
+		$this->dompdf->render();
+		$this->dompdf->stream("laporan.pdf", array('Attachment'=>0));
 	}
 }
 
